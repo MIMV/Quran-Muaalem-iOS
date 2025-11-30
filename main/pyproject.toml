@@ -1,0 +1,70 @@
+# main docs of setup tools: https://setuptools.pypa.io/en/latest/userguide/quickstart.html
+# pypip tutoral: https://packaging.python.org/en/latest/tutorials/packaging-projects/
+# Video Tutorial: https://www.youtube.com/watch?v=v6tALyc4C10
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+license = "MIT"
+name = "quran-muaalem"
+version = "0.0.3"
+authors = [
+  { name="Abdullah", email="abdullahamlyossef@gmail.com" },
+]
+description = "Quran Phonetic Script with addional quarnic utils"
+readme = "README.md"
+dependencies = [
+    "diff-match-patch>=20241021",
+    "numpy>=2.2.6",
+    "quran-transcript>=0.1.0",
+    "rich>=14.1.0",
+    "torch>=2.7.0",
+    "transformers>=4.55.0",
+]
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
+]
+
+
+# Optional dependencies
+[project.optional-dependencies]
+
+test = [
+  "librosa>=0.11.0",
+  "numba>=0.61.2",
+  "pytest",
+]
+ui = [
+    "gradio>=5.43.1",
+    "librosa>=0.11.0",
+    "numba>=0.61.2",
+    "moviepy>=2.2.1",
+]
+api = [
+    "fastapi",
+    "uvicorn[standard]",
+    "python-multipart",
+    "librosa>=0.11.0",
+    "numba>=0.61.2",
+]
+deploy = [
+    "modal",
+]
+
+
+[project.scripts]
+quran-muaalem-ui = "quran_muaalem.gradio_app:main"
+
+[project.urls]
+Homepage = "https://github.com/obadx/quran-muaalem"
+Issues = "https://github.com/obadx/quran-muaalem/issues"
+
+# for addint data: https://setuptools.pypa.io/en/latest/userguide/datafiles.html#package-data
+# [tool.setuptools.package-data]
+# quran_transcript = ["quran-script/*"]
